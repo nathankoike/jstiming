@@ -47,5 +47,5 @@ function testAlgo(algo = _ => {}) {
   return results;
 }
 
-// // debugging code
-// console.log(testAlgo());
+// debugging code
+console.log(testAlgo());

@@ -16,10 +16,8 @@ function merge(first, last, cond = (x, y) => true) {
   // the final array
   var result = [];
 
-  console.log(first);
-
   // while both arrays are full
-  while (first.length > 1) {
+  while (first.length > 0 && last.length > 0) {
     // if the first item of the first array meets the condition
     if (cond(first[0], last[0])) {
       // add the first element of the first array to the result
@@ -40,9 +38,11 @@ function merge(first, last, cond = (x, y) => true) {
   // if the first array is empty
   if (first == [])
     // dump every element in the last array into the result
-    for (; last != []; last = last.slice(1)) result.push(last[0]);
+    for (var i = 0; i < last.length; i++) result.push(last[i]);
   // dump every element in the first array into the result
-  else for (; first != []; first = first.slice(1)) result.push(first[0]);
+  else for (var i = 0; i < first.length; i++) result.push(first[i]);
+
+  return result;
 }
 
 function sort(ary) {
@@ -57,8 +57,11 @@ function sort(ary) {
   front = sort(front);
   rear = sort(rear);
 
+  console.log(front);
+
   // merge the front and rear of the array and return
   return merge(front, rear);
 }
 
+// should be: [1, 2, 3, 4, 5, 6]
 console.log(sort([2, 3, 1, 5, 4, 6]));
