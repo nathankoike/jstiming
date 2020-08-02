@@ -3,7 +3,10 @@ Auth: Nate Koike
 Date: 2 August 2020
 Desc: automatically tests the timing of an array algorithm
 */
+
 const merge = require("./merge");
+// the maximum number of things in an dummy array
+const max = 2 ** 20;
 
 // make an array of a specified size full of random numbers and run the
 // algorithm on that array
@@ -29,15 +32,12 @@ function singleTest(size, algo = _ => {}) {
   // find the change in time
   const elapsed = endTime - startTime;
 
-  console.log(elapsed);
   return elapsed;
 }
 
 // run a series of tests on the algorithm
 // this function has a default test that ends immediately
 function testAlgo(algo = _ => {}) {
-  const max = 2 ** 20;
-
   // make an array to hold the results of the tests
   var results = [];
 
@@ -49,5 +49,39 @@ function testAlgo(algo = _ => {}) {
   return results;
 }
 
+// test the built-in sort method for arrays
+function testBase() {
+  var results = [];
+  for (var size = 1; size < max; size *= 2) {
+    var test = [];
+    for (var i = 0; i < size; i++) test.push(Math.random());
+
+    var date = new Date();
+    const st = date.getTime();
+
+    test.sort();
+
+    date = new Date();
+    const et = date.getTime();
+
+    results.push(et - st);
+  }
+
+  return results;
+}
+
+// print the times nicely
+function printTimes(times) {
+  for (var i = 0; i < times.length; i++) {
+    console.log("input size: ", 2 ** i);
+    console.log(" time (ms): ", times[i]);
+    console.log();
+  }
+}
+
+// // test coded algo
+// printTimes(testAlgo(merge.sort));
+
 // debugging code
 console.log(testAlgo(merge.sort));
+console.log(testBase());
