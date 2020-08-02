@@ -36,12 +36,16 @@ function merge(first, last, cond = (x, y) => true) {
 
   // one array is empty
   // if the first array is empty
-  if (first == [])
+  if (first.length < 1) {
     // dump every element in the last array into the result
     for (var i = 0; i < last.length; i++) result.push(last[i]);
-  // dump every element in the first array into the result
-  else for (var i = 0; i < first.length; i++) result.push(first[i]);
+  } else {
+    // dump every element in the first array into the result
+    for (var i = 0; i < first.length; i++) result.push(first[i]);
+  }
 
+  // // debugging code
+  // console.log(result);
   return result;
 }
 
@@ -57,11 +61,10 @@ function sort(ary) {
   front = sort(front);
   rear = sort(rear);
 
-  console.log(front);
-
   // merge the front and rear of the array and return
-  return merge(front, rear);
+  return merge(front, rear, sortCondition);
 }
 
-// should be: [1, 2, 3, 4, 5, 6]
-console.log(sort([2, 3, 1, 5, 4, 6]));
+// // debugging code
+// // should be: [1, 2, 3, 4, 5, 6]
+// console.log(sort([2, 1, 3, 5, 4, 6]));
