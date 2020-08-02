@@ -11,7 +11,7 @@ const date = new Date();
 // this function has a default test that ends immediately
 function singleTest(size, algo = _ => {}) {
   // make a test array
-  var test = {};
+  var test = [];
 
   // fill the array with random numbers
   for (var i = 0; i < size; i++) test.push(Math.random());
@@ -32,11 +32,12 @@ function singleTest(size, algo = _ => {}) {
 }
 
 // run a series of tests on the algorithm
-function testAlgo(algo) {
+// this function has a default test that ends immediately
+function testAlgo(algo = _ => {}) {
   const max = 2 ** 15;
 
   // make an array to hold the results of the tests
-  var results = {};
+  var results = [];
 
   // run a series of tests on the algorithm
   for (var size = 1; size < max; size *= 2)
@@ -47,4 +48,4 @@ function testAlgo(algo) {
 }
 
 // // debugging code
-// console.log(singleTest(0));
+// console.log(testAlgo());
