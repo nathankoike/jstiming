@@ -49,22 +49,23 @@ function merge(first, last, cond = (x, y) => true) {
   return result;
 }
 
-function sort(ary) {
-  // check to see if the array is minimal
-  if (ary.length < 2) return ary;
+module.exports = {
+  sort: function sort(ary) {
+    // check to see if the array is minimal
+    if (ary.length < 2) return ary;
 
-  // split the array in half
-  var front = ary.slice(0, Math.floor(ary.length / 2));
-  var rear = ary.slice(Math.floor(ary.length / 2), ary.length);
+    // split the array in half
+    var front = ary.slice(0, Math.floor(ary.length / 2));
+    var rear = ary.slice(Math.floor(ary.length / 2), ary.length);
 
-  // sort the front and rear of the array
-  front = sort(front);
-  rear = sort(rear);
+    // sort the front and rear of the array
+    front = sort(front);
+    rear = sort(rear);
 
-  // merge the front and rear of the array and return
-  return merge(front, rear, sortCondition);
-}
-
+    // merge the front and rear of the array and return
+    return merge(front, rear, sortCondition);
+  }
+};
 // // debugging code
 // // should be: [1, 2, 3, 4, 5, 6]
 // console.log(sort([2, 1, 3, 5, 4, 6]));

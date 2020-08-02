@@ -3,7 +3,7 @@ Auth: Nate Koike
 Date: 2 August 2020
 Desc: automatically tests the timing of an array algorithm
 */
-
+const merge = require("./merge");
 const date = new Date();
 
 // make an array of a specified size full of random numbers and run the
@@ -48,4 +48,4 @@ function testAlgo(algo = _ => {}) {
 }
 
 // debugging code
-console.log(testAlgo());
+console.log(testAlgo(merge.sort));
