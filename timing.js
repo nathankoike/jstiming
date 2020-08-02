@@ -79,9 +79,9 @@ function printTimes(times) {
   }
 }
 
-// // test coded algo
-// printTimes(testAlgo(merge.sort));
+// // debugging code
+// console.log(testAlgo(merge.sort));
+// console.log(testBase());
 
-// debugging code
-console.log(testAlgo(merge.sort));
-console.log(testBase());
+// test coded algo
+printTimes(testAlgo(merge.sort));
