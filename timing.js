@@ -11,28 +11,40 @@ const date = new Date();
 // this function has a default test that ends immediately
 function singleTest(size, algo = _ => {}) {
   // make a test array
-  test = {};
+  var test = {};
 
   // fill the array with random numbers
   for (var i = 0; i < size; i++) test.push(Math.random());
 
   // get the time at the start of the algorithm
-  startTime = date.getTime();
+  const startTime = date.getTime();
 
   // run the algorithm on the test array
   algo(test);
 
   // get the time at the end of the algorithm
-  endTime = date.getTime();
+  const endTime = date.getTime();
 
   // find the change in time
-  elapsed = endTime - startTime;
+  const elapsed = endTime - startTime;
 
   return elapsed;
 }
 
 // run a series of tests on the algorithm
-function testAlgo(algo) {}
+function testAlgo(algo) {
+  const max = 2 ** 15;
+
+  // make an array to hold the results of the tests
+  var results = {};
+
+  // run a series of tests on the algorithm
+  for (var size = 1; size < max; size *= 2)
+    // push the result onto the array
+    results.push(singleTest(size, algo));
+
+  return results;
+}
 
 // // debugging code
 // console.log(singleTest(0));
