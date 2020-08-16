@@ -5,6 +5,7 @@ Desc: automatically tests the timing of an array algorithm
 */
 
 const merge = require("./merge");
+
 // the maximum number of things in an dummy array
 const max = 2 ** 20;
 
